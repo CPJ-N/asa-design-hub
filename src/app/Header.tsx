@@ -1,17 +1,47 @@
-// src/components/Header.tsx
-import Link from 'next/link';
+"use client";
 
-export function Header() {
+import * as React from "react";
+import { useRef } from "react";
+import { motion, sync, useCycle } from "framer-motion";
+import { useDimensions } from "./utils/use-dimensions";
+import { MenuToggle } from "./components/MenuToggle";
+import { Navigation } from "./components/Navigation";
+
+const sidebar = {
+  open: (height = 1000) => ({
+    clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+    transition: {
+      type: "spring",
+      stiffness: 20,
+      restDelta: 2
+    }
+  }),
+  closed: {
+    clipPath: "circle(30px at 40px 40px)",
+    transition: {
+      delay: 0.5,
+      type: "spring",
+      stiffness: 400,
+      damping: 40
+    }
+  }
+};
+
+export const Header = () => {
+  const [isOpen, toggleOpen] = useCycle(false, true);
+  const containerRef = useRef(null);
+  const { height } = useDimensions(containerRef);
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm">
-      <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-gray-800">ASA</Link>
-        <div className="space-x-4">
-          <Link href="#about" className="text-gray-600 hover:text-gray-800">About</Link>
-          <Link href="#projects" className="text-gray-600 hover:text-gray-800">Projects</Link>
-          <Link href="#contact" className="text-gray-600 hover:text-gray-800">Contact</Link>
-        </div>
-      </nav>
-    </header>
+    <motion.nav
+      initial={false}
+      animate={isOpen ? "open" : "closed"}
+      custom={height}
+      ref={containerRef}
+    >
+      <motion.div className="background" variants={sidebar} />
+      <Navigation />
+      <MenuToggle toggle={() => toggleOpen()} />
+    </motion.nav>
   );
-}
+};
