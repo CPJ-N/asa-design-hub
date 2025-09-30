@@ -1,15 +1,4 @@
 import * as React from "react";
-import { motion, SVGMotionProps } from "framer-motion";
-
-const Path = (props: SVGMotionProps<SVGPathElement>) => (
-  <motion.path
-    fill="transparent"
-    strokeWidth="3"
-    stroke="hsl(0, 0%, 18%)"
-    strokeLinecap="round"
-    {...props}
-  />
-);
 
 interface MenuToggleProps {
   toggle: () => void;
