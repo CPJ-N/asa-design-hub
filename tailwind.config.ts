@@ -9,11 +9,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        primary: '#e0f11f',
+        secondary: '#121212',
+        light: '#f0f0f0',
+      },
+      fontFamily: {
+        display: ['Big Shoulders Display', 'sans-serif'],
+        body: ['DM Sans', 'sans-serif'],
+        mono: ['Inter', 'monospace'],
+      },
+      animation: {
+        'bounce-slow': 'bounce 2s infinite',
       },
     },
   },
   plugins: [],
 };
+
 export default config;
