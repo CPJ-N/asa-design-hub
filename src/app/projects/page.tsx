@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ModernNav } from '../components/ModernNav';
 import { ModernFooter } from '../components/ModernFooter';
+import { BubbleBackground } from '../components/BubbleBackground';
 
 const projects = [
   {
@@ -78,6 +79,7 @@ export default function ProjectsPage() {
 
   return (
     <main className="min-h-screen bg-secondary">
+      <BubbleBackground />
       <ModernNav />
       {/* Hero Section */}
       <section className="pt-32 pb-20">
