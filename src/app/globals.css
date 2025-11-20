@@ -55,8 +55,8 @@
   }
 
   body {
-    background-color: var(--color-secondary);
-    color: var(--color-light);
+    background-color: #f9fafb;
+    color: #111827;
     font-family: var(--font-body);
     line-height: 1.6;
     overflow-x: hidden;
